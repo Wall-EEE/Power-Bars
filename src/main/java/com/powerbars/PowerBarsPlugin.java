@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
+import net.runelite.api.Skill;
+import net.runelite.api.Skills;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.config.ConfigManager;
@@ -23,6 +25,9 @@ public class PowerBarsPlugin extends Plugin
 
 	@Inject
 	private PowerBarsConfig config;
+	 
+	@Inject
+	private Skills skills;
 
 	@Override
 	protected void startUp() throws Exception
@@ -41,6 +46,12 @@ public class PowerBarsPlugin extends Plugin
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
+			int hitpoints = skills.getBoostedSkillLevel(Skill.HITPOINTS);
+			int stamina = client.getEnergy();
+			int prayerPoints = skills.getBoostedSkillLevel(Skill.PRAYER);
+
+			log.info("Current stats - HP: "+ hitpoints + ", Stamina: "+ stamina + ", Prayer: "+ prayerPoints);
+			
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "PowerBars says " + config.greeting(), null);
 		}
 	}

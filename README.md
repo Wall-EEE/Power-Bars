@@ -20,3 +20,9 @@
 6. **Publish Your Plugin:** Once you are satisfied that your plugin works as expected, you can publish it. To do so, you’ll need to create a new release that matches the version scheme in your `plugin.properties` file.
 
 As you work through these steps, don't hesitate to ask if you have questions or if you encounter problems. Would you also like advice on how to implement your code or strategies for testing your plugin?
+
+## Making the plugin
+To fetch player information, you can use items from the `net.runelite.api` package. Here's an example how to fetch player's HP, Stamina and Prayer points:
+
+This is done in the PowerBarsConfige
+These snippets will give you the current HP, Stamina and Prayer points. You can use these values to display bars accordingly. Use a proper function to calculate bar percentages based on these values to display them accurately.
